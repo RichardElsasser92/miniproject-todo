@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import application.commonClasses.messages.Message;
 import application.commonClasses.messages.MessageType;
 
-public class ResultMsg extends Message{
+public class Result_Message extends Message{
 	protected static final String SERVER_RESPONSE = "Result";
 	public static final String ATTR_SUBTYPE = "subtype";
 	
 	protected String result;
 	
-	public ResultMsg() {
+	public Result_Message() {
 		super();
 	}
 

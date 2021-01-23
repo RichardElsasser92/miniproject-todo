@@ -1,6 +1,6 @@
 package application.commonClasses.messages;
 
-import application.commonClasses.messages.serverReplies.ResultMsg;
+import application.commonClasses.messages.serverReplies.Result_Message;
 
 public enum MessageType {
 	Ping, Register, Login, ChangePassword, CreateToDo, ListToDos, GetToDo, DeleteToDo, Logout, Result, Error;
@@ -34,7 +34,7 @@ public enum MessageType {
 			type = DeleteToDo;
 		else if (msg instanceof Logout)
 			type = Logout;
-		else if (msg instanceof ResultMsg)
+		else if (msg instanceof Result_Message)
 			type = Result;
 		return type;
 

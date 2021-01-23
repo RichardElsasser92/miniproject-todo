@@ -2,7 +2,7 @@ package application.commonClasses.messages.serverReplies;
 
 import java.util.ArrayList;
 
-public class ResultPingMsg extends ResultMsg {
+public class Result_Ping extends Result_Message {
 	private String reply;
 
 	

@@ -16,9 +16,9 @@ public enum Result_MessageTypes {
 
 	public static Result_MessageTypes getType(Message msg) {
 		Result_MessageTypes type = Result_MessageTypes.ResultError;
-		if (msg instanceof ResultPingMsg)
+		if (msg instanceof Result_Ping)
 			type = ResultPing;
-		else if (msg instanceof ResultRegisterMsg)
+		else if (msg instanceof Result_Register)
 			type = ResultRegister;
 		else if (msg instanceof Result_Login)
 			type = ResultLogin;

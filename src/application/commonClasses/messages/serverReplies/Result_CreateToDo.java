@@ -2,7 +2,7 @@ package application.commonClasses.messages.serverReplies;
 
 import java.util.ArrayList;
 
-public class Result_CreateToDo extends ResultMsg{
+public class Result_CreateToDo extends Result_Message{
 
 	private static final String TODO_ID = "id";
 

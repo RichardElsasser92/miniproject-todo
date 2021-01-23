@@ -84,7 +84,6 @@ public class User_FM {
 	}
 
 	private Stream<String> loadFileContent() throws IOException {
-		// TODO Auto-generated method stub
 		return Files.lines(getFile().toPath()).filter(l -> !l.isEmpty());
 	}
 

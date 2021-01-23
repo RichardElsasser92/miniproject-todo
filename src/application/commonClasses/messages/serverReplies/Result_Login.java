@@ -1,6 +1,6 @@
 package application.commonClasses.messages.serverReplies;
 
-public class Result_Login extends ResultMsg {
+public class Result_Login extends Result_Message {
 	private String reply;
 
 	public void setRep() {

@@ -23,8 +23,8 @@ import application.commonClasses.messages.serverReplies.Result_GetToDo;
 import application.commonClasses.messages.serverReplies.Result_ListToDo;
 import application.commonClasses.messages.serverReplies.Result_Login;
 import application.commonClasses.messages.serverReplies.Result_Logout;
-import application.commonClasses.messages.serverReplies.ResultPingMsg;
-import application.commonClasses.messages.serverReplies.ResultRegisterMsg;
+import application.commonClasses.messages.serverReplies.Result_Ping;
+import application.commonClasses.messages.serverReplies.Result_Register;
 
 public class ServerThreadForClient extends Thread {
 	private final Logger logger = Logger.getLogger("");
@@ -61,7 +61,7 @@ public class ServerThreadForClient extends Thread {
 		Message msgOut = null;
 		switch (MessageType.getType(msgIn)) {
 		case Ping:
-			ResultPingMsg repMsg = new ResultPingMsg();
+			Result_Ping repMsg = new Result_Ping();
 			String messageIn = msgIn.toString();
 			if (msgIn.getToken().equals("null")) {
 				repMsg.setReply("true");
@@ -86,7 +86,7 @@ public class ServerThreadForClient extends Thread {
 			users = getAllUsers();
 			int numOfUsers = users.size();
 			User.setHighestId(numOfUsers);
-			ResultRegisterMsg regMsg = new ResultRegisterMsg();
+			Result_Register regMsg = new Result_Register();
 			regMsg.setResult("true");
 			String regMessage = msgIn.toString();
 			String[] regSplit = regMessage.split("\\n");

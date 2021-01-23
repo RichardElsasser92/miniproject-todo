@@ -2,7 +2,7 @@ package application.commonClasses.messages.serverReplies;
 
 import java.util.ArrayList;
 
-public class Result_Error extends ResultMsg {
+public class Result_Error extends Result_Message {
 	private static final String ERROR = "error";
 	
 	private String error;

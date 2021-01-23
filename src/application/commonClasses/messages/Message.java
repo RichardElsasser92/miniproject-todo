@@ -18,9 +18,9 @@ import application.commonClasses.messages.serverReplies.Result_ListToDo;
 import application.commonClasses.messages.serverReplies.Result_Login;
 import application.commonClasses.messages.serverReplies.Result_Logout;
 import application.commonClasses.messages.serverReplies.Result_MessageTypes;
-import application.commonClasses.messages.serverReplies.ResultMsg;
-import application.commonClasses.messages.serverReplies.ResultPingMsg;
-import application.commonClasses.messages.serverReplies.ResultRegisterMsg;
+import application.commonClasses.messages.serverReplies.Result_Message;
+import application.commonClasses.messages.serverReplies.Result_Ping;
+import application.commonClasses.messages.serverReplies.Result_Register;
 
 public abstract class Message {
 	private static Logger logger = Logger.getLogger("");
@@ -152,7 +152,7 @@ public abstract class Message {
 				newMessage = new Ping();
 			else if(type == MessageType.Result) {
 				NameValue subMessageType = pairs.remove(0);
-				boolean subOk = subMessageType.name.equals(ResultMsg.ATTR_SUBTYPE);
+				boolean subOk = subMessageType.name.equals(Result_Message.ATTR_SUBTYPE);
 				Result_MessageTypes subType = Result_MessageTypes.parseType(subMessageType.value);
 				if(!subOk) {
 					Result_Error subMsg = new Result_Error();
@@ -161,11 +161,11 @@ public abstract class Message {
 				}
 				if(subOk) {
 					if(subType == Result_MessageTypes.ResultPing) {
-						ResultPingMsg msg = new ResultPingMsg();
+						Result_Ping msg = new Result_Ping();
 						newMessage = msg;
 					}
 					else if(subType == Result_MessageTypes.ResultRegister) {
-						ResultRegisterMsg msg = new ResultRegisterMsg();
+						Result_Register msg = new Result_Register();
 						newMessage = msg;
 					}
 					else if(subType == Result_MessageTypes.ResultLogin) {
