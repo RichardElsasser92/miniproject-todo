@@ -1,0 +1,8 @@
+#01;richard-elsasser@testMail.com;Password1234
+#02;john.doe@test.com;Password456
+#02;jane.doe@test.com;Password9087
+#04;blabla@gmail.com;12345
+#05;richard@email.com;kdmksf
+#06;user@mail.com;kdsmdsf
+#07;user@gmail.com;dsfdsfdsf
+#08;user@test.ch;efsdfdsf

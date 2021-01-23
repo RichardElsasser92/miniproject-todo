@@ -1,0 +1,88 @@
+
+.label {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1E73BE;
+  -fx-alignment: center-right;
+  -fx-padding: 20px;
+}
+
+.text-field {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #000000;
+  -fx-alignment: center-left;
+}
+
+.button {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  -fx-min-width: 100;
+  -fx-margin: 20px;
+  -fx-background-color: #1E73BE;
+}
+
+.text-area {
+  -fx-font-family: monospace;
+  -fx-font-size: 12px;
+  -fx-margin: 20px;
+}
+
+#TopBox {
+	-fx-alignment: center;
+	-fx-spacing: 5px;
+}
+
+#BottomBox {
+	-fx-alignment: center;
+	-fx-spacing: 5px;
+}
+
+#IP {
+	-fx-pref-width: 200px;
+}
+
+#Port {
+	-fx-pref-width: 100px;
+}
+
+.menu .label {
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #800080;
+  -fx-border-width: 0px;
+  
+}
+
+.valid {
+  -fx-text-fill: green;
+}
+
+.invalid {
+  -fx-text-fill: red;
+}
+
+.lblFooter {
+	-fx-font-size: 10px;
+	-fx-text-fill: black;
+}
+
+.display {
+	-fx-font-size: 16px;
+	-fx-text-fill: black;
+    -fx-label-padding: 2em 0em 2em 2em;
+
+}
+
+#menuFile > .label {
+	-fx-background-image: url('menu_icon.png');
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
+}
+
+
+
+
+
