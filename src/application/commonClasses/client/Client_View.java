@@ -57,17 +57,14 @@ import application.commonClasses.Tasks_Priority;
 import application.commonClasses.Translator;
 
 public class Client_View extends View<Client_Model> {
+	ListView<Task> listView;
 	Translator t;
-	Menu menuFile;
-	Menu menuFileLanguage;
-	MenuItem menuProfile;
-	MenuItem menuPing;
-	MenuItem menuLogout;
-
+	
 	GridPane root;
 	GridPane todoMiddle;
 	GridPane regBox;
 	VBox sp; 
+	
 
 	protected Label lblIP;
 	protected TextField txtIP;
@@ -105,10 +102,12 @@ public class Client_View extends View<Client_Model> {
 	protected Label lblToDoId;
 	protected TextField txtToDoId;
 	
+	Menu menuFile;
+	Menu menuFileLanguage;
+	MenuItem menuProfile;
+	MenuItem menuPing;
+	MenuItem menuLogout;
 
-	ListView<Task> listView;
-
-	
 
 	protected Button btnRegister;
 	protected Button btnLogin;
@@ -182,7 +181,7 @@ public class Client_View extends View<Client_Model> {
 
 		listView = new ListView<Task>();
 
-		pT = new Label("My Infos");
+		pT = new Label("Change Password");
 		n = new Label("E-Mail: ");
 		p = new Label("OldPassword: ");
 		np = new Label("New password: ");
@@ -198,7 +197,6 @@ public class Client_View extends View<Client_Model> {
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		Logger logger = sl.getLogger();
 
-		// center element holder
 		VBox center = new VBox();
 
 		MenuBar menuBar = new MenuBar();

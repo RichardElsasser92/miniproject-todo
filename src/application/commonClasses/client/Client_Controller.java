@@ -23,20 +23,21 @@ import javafx.stage.WindowEvent;
 public class Client_Controller extends Controller<Client_Model, Client_View> {
 	ServiceLocator serviceLocator;
 
-	private ObservableList<Task> todos;
-
 	private User user;
 	TextField newPassword;
+	
+	private ObservableList<Task> todos;
+
 
 	private Stage stage;
 	private Stage profileStage;
 	private Task selectedTodo;
 
-	String clientIp;
-	int clientPort;
-
 	private boolean clientName = false;
 	private boolean clientPassword = false;
+	
+	String clientIp;
+	int clientPort;
 
 	public Client_Controller(Client_Model model, Client_View view) {
 		super(model, view);
@@ -139,7 +140,6 @@ public class Client_Controller extends Controller<Client_Model, Client_View> {
 			}
 		});
 
-		// not used, todos received when clicked on list
 		view.btnGetTodo.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -201,7 +201,7 @@ public class Client_Controller extends Controller<Client_Model, Client_View> {
 			profileStage = new Stage();
 			profileStage.setTitle(view.pT.getText());
 			Scene scene = new Scene(root, 350, 200);
-			scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("client.css").toExternalForm());
 			profileStage.setScene(scene);
 
 			profileStage.show();
@@ -333,17 +333,17 @@ public class Client_Controller extends Controller<Client_Model, Client_View> {
 			String priority = parts[4];
 			String description = parts[5];
 			
-			// test data
+			
 			Task todo = new Tasks("00", titel, priority, description); 
 			todo.setId(id);
 			todo.setTitel(titel);
 			todo.setPriority(priority);
 			todo.setDescription(description);
-			td.add(todo); // ad to list of todos
+			td.add(todo);
 		}
-		todos.clear(); // clear observable list of todos
-		todos.addAll(td); // add all todos to observable list
-		view.listView.setItems(todos); // fill list view
+		todos.clear();
+		todos.addAll(td);
+		view.listView.setItems(todos); 
 	}
 
 	public void loadAttributes(MouseEvent e) {
@@ -377,7 +377,7 @@ public class Client_Controller extends Controller<Client_Model, Client_View> {
 			stage = new Stage();
 			stage.setTitle(view.tT.getText());
 			Scene scene = new Scene(root, 500, 500);
-			scene.getStylesheets().add(getClass().getResource("app.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("client.css").toExternalForm());
 			stage.setScene(scene);
 
 			stage.show();

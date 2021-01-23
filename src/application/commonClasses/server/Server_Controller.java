@@ -10,7 +10,7 @@ import application.commonClasses.fileManager.User_FM;
 import application.commonClasses.messages.Login;
 import application.commonClasses.messages.Message;
 
-public class ServerController {
+public class Server_Controller {
 	
 	private static Map<String, String> sessions = new HashMap<>();
 	

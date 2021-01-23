@@ -1,5 +1,5 @@
 package application.commonClasses.server;
 
-public class ServerView {
+public class Server_View {
 
 }

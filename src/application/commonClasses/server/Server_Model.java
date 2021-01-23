@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.concurrent.Task;
 
-public class ServerModel {
+public class Server_Model {
 
 	private Integer port;
 	
@@ -24,7 +24,7 @@ public class ServerModel {
 				while (true) {
 					Socket clientSocket = listener.accept();
 					
-					ServerThreadForClient client = new ServerThreadForClient(clientSocket);
+					Server_ThreadForClient client = new Server_ThreadForClient(clientSocket);
 					client.start();
 					}
 			}catch (Exception e) {

@@ -26,11 +26,11 @@ import application.commonClasses.messages.serverReplies.Result_Logout;
 import application.commonClasses.messages.serverReplies.Result_Ping;
 import application.commonClasses.messages.serverReplies.Result_Register;
 
-public class ServerThreadForClient extends Thread {
+public class Server_ThreadForClient extends Thread {
 	private final Logger logger = Logger.getLogger("");
 	private Socket clientSocket;
 
-	public ServerThreadForClient(Socket clientSocket) {
+	public Server_ThreadForClient(Socket clientSocket) {
 		this.clientSocket = clientSocket;
 	}
 
@@ -68,7 +68,7 @@ public class ServerThreadForClient extends Thread {
 				repMsg.setRep();
 				msgOut = repMsg;
 			} else {
-				boolean valid = ServerController.validToken(msgIn.getToken());
+				boolean valid = Server_Controller.validToken(msgIn.getToken());
 				if (valid) {
 					repMsg.setToken(msgIn.getToken());
 					repMsg.setReply("true");
@@ -120,7 +120,7 @@ public class ServerThreadForClient extends Thread {
 			String token = null;
 			String login = null;
 			if (exists) {
-				token = ServerController.login((Login) msgIn);
+				token = Server_Controller.login((Login) msgIn);
 				login = "true";
 				logMsg.setToken(token);
 				logMsg.setReply(login);
@@ -144,7 +144,7 @@ public class ServerThreadForClient extends Thread {
 				password = pa[1];
 				String[] paN = regSplit[4].split("\\|");
 				String passwordN = paN[1];
-				String uid = ServerController.getUserId(msgIn);
+				String uid = Server_Controller.getUserId(msgIn);
 				user = new User(name, passwordN);
 
 				boolean check = changePassword(uid, name, password, passwordN);
@@ -175,7 +175,7 @@ public class ServerThreadForClient extends Thread {
 				String priority = p[1];
 				String[] d = split[4].split("\\|");
 				String description = d[1];
-				String userId = ServerController.getUserId(msgIn);
+				String userId = Server_Controller.getUserId(msgIn);
 				Task toDo = new Tasks(userId, titel, priority, description);
 				saveTask(toDo);
 				String id = toDo.getId();
@@ -240,7 +240,7 @@ public class ServerThreadForClient extends Thread {
 			break;
 		case Logout:
 			Result_Logout loMsg = new Result_Logout();
-			ServerController.removeToken(msgIn.getToken());
+			Server_Controller.removeToken(msgIn.getToken());
 			loMsg.setResult("true");
 			msgOut = loMsg;
 			break;
@@ -285,7 +285,7 @@ public class ServerThreadForClient extends Thread {
 		List<Task> todos = getAllToDos();
 		List<String> userTodoIds = new ArrayList<>();
 
-		String uid = ServerController.getUserId(msg);
+		String uid = Server_Controller.getUserId(msg);
 
 		for (Task todo : todos) {
 			if (todo.getUserId().equals(uid)) {
