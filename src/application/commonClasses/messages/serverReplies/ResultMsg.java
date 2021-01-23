@@ -32,7 +32,7 @@ public class ResultMsg extends Message{
 		ArrayList<NameValue> pairs = new ArrayList<>();
 		
 		pairs.add(new NameValue(ATTR_TYPE, MessageType.getType(this).toString()));
-		pairs.add(new NameValue(ATTR_SUBTYPE, ResultMessageTypes.getType(this).toString()));
+		pairs.add(new NameValue(ATTR_SUBTYPE, Result_MessageTypes.getType(this).toString()));
 		pairs.add(new NameValue(CLIENT_TOKEN, token));
 		
 		this.sendAttributes(pairs);

@@ -5,7 +5,7 @@ import java.util.Random;
 
 import application.commonClasses.messages.Message.NameValue;
 
-public class LoginMsg extends Message {
+public class Login extends Message {
 	private static final String CLIENT_NAME = "name";
 	private static final String CLIENT_PASSWORD = "password";
 	

@@ -2,14 +2,14 @@ package application.commonClasses.messages;
 
 import java.util.ArrayList;
 
-public class RegisterMsg extends Message {
+public class Register extends Message {
 	private static final String CLIENT_PASSWORD = "password";
 	private static final String CLIENT_NAME = "name";
 	
 	private String password;
 	private String name;
 	
-	public RegisterMsg() {
+	public Register() {
 		super();
 	}
 	@Override

@@ -12,17 +12,17 @@ import application.appClasses.User;
 import application.commonClasses.fileManager.File_Manager;
 import application.commonClasses.fileManager.Tasks_FM;
 import application.commonClasses.fileManager.User_FM;
-import application.commonClasses.messages.LoginMsg;
+import application.commonClasses.messages.Login;
 import application.commonClasses.messages.Message;
 import application.commonClasses.messages.MessageType;
-import application.commonClasses.messages.serverReplies.ResultChangePasswordMsg;
-import application.commonClasses.messages.serverReplies.ResultCreateToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultDeleteToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultErrorMsg;
-import application.commonClasses.messages.serverReplies.ResultGetToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultListToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultLoginMsg;
-import application.commonClasses.messages.serverReplies.ResultLogoutMsg;
+import application.commonClasses.messages.serverReplies.Result_ChangePassword;
+import application.commonClasses.messages.serverReplies.Result_CreateToDo;
+import application.commonClasses.messages.serverReplies.Result_DeleteToDo;
+import application.commonClasses.messages.serverReplies.Result_Error;
+import application.commonClasses.messages.serverReplies.Result_GetToDo;
+import application.commonClasses.messages.serverReplies.Result_ListToDo;
+import application.commonClasses.messages.serverReplies.Result_Login;
+import application.commonClasses.messages.serverReplies.Result_Logout;
 import application.commonClasses.messages.serverReplies.ResultPingMsg;
 import application.commonClasses.messages.serverReplies.ResultRegisterMsg;
 
@@ -75,7 +75,7 @@ public class ServerThreadForClient extends Thread {
 					repMsg.setRep();
 					msgOut = repMsg;
 				} else {
-					ResultErrorMsg errMsg = new ResultErrorMsg();
+					Result_Error errMsg = new Result_Error();
 					errMsg.setError("Token is not valid!");
 					msgOut = errMsg;
 				}
@@ -101,13 +101,13 @@ public class ServerThreadForClient extends Thread {
 				saveUser(user, true);
 				msgOut = regMsg;
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("User already exists! Please chose a new name or password.");
 				msgOut = errMsg;
 			}
 			break;
 		case Login:
-			ResultLoginMsg logMsg = new ResultLoginMsg();
+			Result_Login logMsg = new Result_Login();
 			regMessage = msgIn.toString();
 			regSplit = regMessage.split("\\n");
 			n = regSplit[2].split("\\|");
@@ -120,14 +120,14 @@ public class ServerThreadForClient extends Thread {
 			String token = null;
 			String login = null;
 			if (exists) {
-				token = ServerController.login((LoginMsg) msgIn);
+				token = ServerController.login((Login) msgIn);
 				login = "true";
 				logMsg.setToken(token);
 				logMsg.setReply(login);
 				logMsg.setRep();
 				msgOut = logMsg;
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("User with username: " + name + " and password: " + password
 						+ " does not exist. Please register!");
 				msgOut = errMsg;
@@ -135,7 +135,7 @@ public class ServerThreadForClient extends Thread {
 			break;
 		case ChangePassword:
 			if (!msgIn.getToken().equals("null")) {
-				ResultChangePasswordMsg cPMsg = new ResultChangePasswordMsg();
+				Result_ChangePassword cPMsg = new Result_ChangePassword();
 				regMessage = msgIn.toString();
 				regSplit = regMessage.split("\\n");
 				n = regSplit[2].split("\\|");
@@ -154,19 +154,19 @@ public class ServerThreadForClient extends Thread {
 					saveUser(user, false);
 					msgOut = cPMsg;
 				} else {
-					ResultErrorMsg errMsg = new ResultErrorMsg();
+					Result_Error errMsg = new Result_Error();
 					errMsg.setError("Password could not be changed. Please check username and password and try again.");
 					msgOut = errMsg;
 				}
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("Token not valid. Please login again");
 				msgOut = errMsg;
 			}
 			break;
 		case CreateToDo:
 			if (!msgIn.getToken().equals("null")) {
-				ResultCreateToDoMsg tdMsg = new ResultCreateToDoMsg();
+				Result_CreateToDo tdMsg = new Result_CreateToDo();
 				String toDomessage = msgIn.toString();
 				String[] split = toDomessage.split("\\n");
 				String[] t = split[2].split("\\|");
@@ -184,14 +184,14 @@ public class ServerThreadForClient extends Thread {
 				tdMsg.setResult("true" + "|" + id);
 				msgOut = tdMsg;
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("Token not valid. Please login again");
 				msgOut = errMsg;
 			}
 			break;
 		case GetToDo:
 			if (!msgIn.getToken().equals("null")) {
-				ResultGetToDoMsg gTdMsg = new ResultGetToDoMsg();
+				Result_GetToDo gTdMsg = new Result_GetToDo();
 				String[] split = msgIn.toString().split("\\n");
 				String[] tdId = split[2].split("\\|");
 				String todoId = tdId[1];
@@ -199,14 +199,14 @@ public class ServerThreadForClient extends Thread {
 				gTdMsg.setResult("true" + "|" + String.join("|", todo));
 				msgOut = gTdMsg;
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("Token not valid. Please login again");
 				msgOut = errMsg;
 			}
 			break;
 		case DeleteToDo:
 			if (!msgIn.getToken().equals("null")) {
-				ResultDeleteToDoMsg dMsg = new ResultDeleteToDoMsg();
+				Result_DeleteToDo dMsg = new Result_DeleteToDo();
 				String[] split = msgIn.toString().split("\\n");
 				String[] tdId = split[2].split("\\|");
 				String todoId = tdId[1];
@@ -215,37 +215,37 @@ public class ServerThreadForClient extends Thread {
 					dMsg.setResult("true");
 					msgOut = dMsg;
 				} else {
-					ResultErrorMsg errMsg = new ResultErrorMsg();
+					Result_Error errMsg = new Result_Error();
 					errMsg.setError("ToDo could not be deleted");
 					msgOut = errMsg;
 				}
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("Token not valid. Please login again");
 				msgOut = errMsg;
 			}
 			break;
 		case ListToDos:
 			if (!msgIn.getToken().equals("null")) {
-				ResultListToDoMsg ltMsg = new ResultListToDoMsg();
+				Result_ListToDo ltMsg = new Result_ListToDo();
 				String[] split = msgIn.toString().split("\\n");
 				String[] ids = getUserToDoIds(msgIn);
 				ltMsg.setResult("true" + "|" + String.join("|", ids));
 				msgOut = ltMsg;
 			} else {
-				ResultErrorMsg errMsg = new ResultErrorMsg();
+				Result_Error errMsg = new Result_Error();
 				errMsg.setError("Token not valid. Please login again");
 				msgOut = errMsg;
 			}
 			break;
 		case Logout:
-			ResultLogoutMsg loMsg = new ResultLogoutMsg();
+			Result_Logout loMsg = new Result_Logout();
 			ServerController.removeToken(msgIn.getToken());
 			loMsg.setResult("true");
 			msgOut = loMsg;
 			break;
 		default:
-			ResultErrorMsg err = new ResultErrorMsg();
+			Result_Error err = new Result_Error();
 			err.setError("We're sorry something went wrong...");
 			msgOut = err;
 			break;

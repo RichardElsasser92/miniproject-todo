@@ -2,12 +2,12 @@ package application.commonClasses.messages;
 
 import java.util.ArrayList;
 
-public class ErrorMsg extends Message {
+public class Error_message extends Message {
 	private static final String ELEMENT_INFO = "info";
 	
 	private String info;
 	
-	public ErrorMsg() {
+	public Error_message() {
 		super();
 	}
 

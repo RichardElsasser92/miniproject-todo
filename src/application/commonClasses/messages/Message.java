@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-import application.commonClasses.messages.serverReplies.ResultChangePasswordMsg;
-import application.commonClasses.messages.serverReplies.ResultCreateToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultDeleteToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultErrorMsg;
-import application.commonClasses.messages.serverReplies.ResultGetToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultListToDoMsg;
-import application.commonClasses.messages.serverReplies.ResultLoginMsg;
-import application.commonClasses.messages.serverReplies.ResultLogoutMsg;
-import application.commonClasses.messages.serverReplies.ResultMessageTypes;
+import application.commonClasses.messages.serverReplies.Result_ChangePassword;
+import application.commonClasses.messages.serverReplies.Result_CreateToDo;
+import application.commonClasses.messages.serverReplies.Result_DeleteToDo;
+import application.commonClasses.messages.serverReplies.Result_Error;
+import application.commonClasses.messages.serverReplies.Result_GetToDo;
+import application.commonClasses.messages.serverReplies.Result_ListToDo;
+import application.commonClasses.messages.serverReplies.Result_Login;
+import application.commonClasses.messages.serverReplies.Result_Logout;
+import application.commonClasses.messages.serverReplies.Result_MessageTypes;
 import application.commonClasses.messages.serverReplies.ResultMsg;
 import application.commonClasses.messages.serverReplies.ResultPingMsg;
 import application.commonClasses.messages.serverReplies.ResultRegisterMsg;
@@ -127,77 +127,77 @@ public abstract class Message {
 		boolean allOk = messageType.name.equals(ATTR_TYPE);
 		MessageType type = MessageType.parseType(messageType.value);
 		if (!allOk) {
-			ErrorMsg msg = new ErrorMsg();
+			Error_message msg = new Error_message();
 			msg.setInfo("Error parsing received message");
 			newMessage = msg;
 		}
 		if (allOk) {
 			if (type == MessageType.Register)
-				newMessage = new RegisterMsg();
+				newMessage = new Register();
 			else if (type == MessageType.Login)
-				newMessage = new LoginMsg();
+				newMessage = new Login();
 			else if (type == MessageType.ChangePassword)
-				newMessage = new ChangePasswordMsg();
+				newMessage = new ChangePassword();
 			else if (type == MessageType.CreateToDo)
-				newMessage = new CreateToDoMsg();
+				newMessage = new CreateToDo();
 			else if (type == MessageType.ListToDos)
-				newMessage = new ListToDosMsg();
+				newMessage = new ListToDos();
 			else if (type == MessageType.GetToDo)
-				newMessage = new GetToDoMsg();
+				newMessage = new GetToDo();
 			else if (type == MessageType.DeleteToDo)
-				newMessage = new DeleteToDoMsg();
+				newMessage = new DeleteToDo();
 			else if (type == MessageType.Logout)
-				newMessage = new LogoutMsg();
+				newMessage = new Logout();
 			else if (type == MessageType.Ping)
-				newMessage = new PingMsg();
+				newMessage = new Ping();
 			else if(type == MessageType.Result) {
 				NameValue subMessageType = pairs.remove(0);
 				boolean subOk = subMessageType.name.equals(ResultMsg.ATTR_SUBTYPE);
-				ResultMessageTypes subType = ResultMessageTypes.parseType(subMessageType.value);
+				Result_MessageTypes subType = Result_MessageTypes.parseType(subMessageType.value);
 				if(!subOk) {
-					ResultErrorMsg subMsg = new ResultErrorMsg();
+					Result_Error subMsg = new Result_Error();
 					subMsg.setError("Error parsing reply.");
 					newMessage = subMsg;
 				}
 				if(subOk) {
-					if(subType == ResultMessageTypes.ResultPing) {
+					if(subType == Result_MessageTypes.ResultPing) {
 						ResultPingMsg msg = new ResultPingMsg();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultRegister) {
+					else if(subType == Result_MessageTypes.ResultRegister) {
 						ResultRegisterMsg msg = new ResultRegisterMsg();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultLogin) {
-						ResultLoginMsg msg = new ResultLoginMsg();
+					else if(subType == Result_MessageTypes.ResultLogin) {
+						Result_Login msg = new Result_Login();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultChangePassword) {
-						ResultChangePasswordMsg msg = new ResultChangePasswordMsg();
+					else if(subType == Result_MessageTypes.ResultChangePassword) {
+						Result_ChangePassword msg = new Result_ChangePassword();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultCreateTodo) {
-						ResultCreateToDoMsg msg = new ResultCreateToDoMsg();
+					else if(subType == Result_MessageTypes.ResultCreateTodo) {
+						Result_CreateToDo msg = new Result_CreateToDo();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultGetToDo) {
-						ResultGetToDoMsg msg = new ResultGetToDoMsg();
+					else if(subType == Result_MessageTypes.ResultGetToDo) {
+						Result_GetToDo msg = new Result_GetToDo();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultListToDo) {
-						ResultListToDoMsg msg = new ResultListToDoMsg();
+					else if(subType == Result_MessageTypes.ResultListToDo) {
+						Result_ListToDo msg = new Result_ListToDo();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultDeleteToDo) {
-						ResultDeleteToDoMsg msg = new ResultDeleteToDoMsg();
+					else if(subType == Result_MessageTypes.ResultDeleteToDo) {
+						Result_DeleteToDo msg = new Result_DeleteToDo();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultLogout) {
-						ResultLogoutMsg msg = new ResultLogoutMsg();
+					else if(subType == Result_MessageTypes.ResultLogout) {
+						Result_Logout msg = new Result_Logout();
 						newMessage = msg;
 					}
-					else if(subType == ResultMessageTypes.ResultError) {
-						ResultErrorMsg msg = new ResultErrorMsg();
+					else if(subType == Result_MessageTypes.ResultError) {
+						Result_Error msg = new Result_Error();
 						newMessage = msg;
 					}
 				}

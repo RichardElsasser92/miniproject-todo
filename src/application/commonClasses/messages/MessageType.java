@@ -16,23 +16,23 @@ public enum MessageType {
 
 	public static MessageType getType(Message msg) {
 		MessageType type = MessageType.Error;
-		if (msg instanceof PingMsg)
+		if (msg instanceof Ping)
 			type = Ping;
-		else if (msg instanceof RegisterMsg)
+		else if (msg instanceof Register)
 			type = Register;
-		else if (msg instanceof LoginMsg)
+		else if (msg instanceof Login)
 			type = Login;
-		else if (msg instanceof ChangePasswordMsg)
+		else if (msg instanceof ChangePassword)
 			type = ChangePassword;
-		else if (msg instanceof CreateToDoMsg)
+		else if (msg instanceof CreateToDo)
 			type = CreateToDo;
-		else if (msg instanceof ListToDosMsg)
+		else if (msg instanceof ListToDos)
 			type = ListToDos;
-		else if (msg instanceof GetToDoMsg)
+		else if (msg instanceof GetToDo)
 			type = GetToDo;
-		else if (msg instanceof DeleteToDoMsg)
+		else if (msg instanceof DeleteToDo)
 			type = DeleteToDo;
-		else if (msg instanceof LogoutMsg)
+		else if (msg instanceof Logout)
 			type = Logout;
 		else if (msg instanceof ResultMsg)
 			type = Result;

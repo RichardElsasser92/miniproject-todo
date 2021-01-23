@@ -1,5 +1,5 @@
 package application.commonClasses.messages.serverReplies;
 
-public class ResultListToDoMsg extends ResultMsg {
+public class Result_ChangePassword extends ResultMsg {
 
 }

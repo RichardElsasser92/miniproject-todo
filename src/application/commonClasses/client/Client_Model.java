@@ -6,16 +6,16 @@ import java.util.logging.Logger;
 
 import application.ServiceLocator;
 import application.abstractClasses.Model;
-import application.commonClasses.messages.ChangePasswordMsg;
-import application.commonClasses.messages.CreateToDoMsg;
-import application.commonClasses.messages.DeleteToDoMsg;
-import application.commonClasses.messages.GetToDoMsg;
-import application.commonClasses.messages.ListToDosMsg;
-import application.commonClasses.messages.LoginMsg;
-import application.commonClasses.messages.LogoutMsg;
+import application.commonClasses.messages.ChangePassword;
+import application.commonClasses.messages.CreateToDo;
+import application.commonClasses.messages.DeleteToDo;
+import application.commonClasses.messages.GetToDo;
+import application.commonClasses.messages.ListToDos;
+import application.commonClasses.messages.Login;
+import application.commonClasses.messages.Logout;
 import application.commonClasses.messages.Message;
-import application.commonClasses.messages.PingMsg;
-import application.commonClasses.messages.RegisterMsg;
+import application.commonClasses.messages.Ping;
+import application.commonClasses.messages.Register;
 
 public class Client_Model extends Model{
 	ServiceLocator serviceLocator;
@@ -64,7 +64,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect(); // connect to server
 		if (socket != null) {
-			PingMsg msgOut = new PingMsg(); // create new message
+			Ping msgOut = new Ping(); // create new message
 			msgOut.setLogin(login);
 			msgOut.setToken(this.token);
 			// msgOut.setClient(name); // initialize message
@@ -87,7 +87,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect(); // connect to server
 		if (socket != null) {
-			RegisterMsg msgOut = new RegisterMsg(); // create new message
+			Register msgOut = new Register(); // create new message
 			msgOut.setName(name); // initialize message
 			msgOut.setPassword(password); // -||-
 			try {
@@ -109,7 +109,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			LoginMsg msgOut = new LoginMsg();
+			Login msgOut = new Login();
 			msgOut.setName(name);
 			msgOut.setPassword(password);
 			try {
@@ -138,7 +138,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			ChangePasswordMsg msgOut = new ChangePasswordMsg();
+			ChangePassword msgOut = new ChangePassword();
 			msgOut.setToken(this.token);
 			msgOut.setName(name);
 			msgOut.setPassword(password);
@@ -169,7 +169,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			CreateToDoMsg msgOut = new CreateToDoMsg();
+			CreateToDo msgOut = new CreateToDo();
 			msgOut.setToken(this.token);
 			msgOut.setTitel(titel);
 			msgOut.setPriority(priority);
@@ -193,7 +193,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			ListToDosMsg msgOut = new ListToDosMsg();
+			ListToDos msgOut = new ListToDos();
 			msgOut.setToken(this.token);
 			try {
 				msgOut.send(socket);
@@ -214,7 +214,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			GetToDoMsg msgOut = new GetToDoMsg();
+			GetToDo msgOut = new GetToDo();
 			msgOut.setToken(token);
 			msgOut.setTodoId(id);
 			try {
@@ -236,7 +236,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			DeleteToDoMsg msgOut = new DeleteToDoMsg();
+			DeleteToDo msgOut = new DeleteToDo();
 			msgOut.setToken(token);
 			msgOut.setTodoId(id);
 			try {
@@ -258,7 +258,7 @@ public class Client_Model extends Model{
 		String result = null;
 		Socket socket = connect();
 		if (socket != null) {
-			LogoutMsg msgOut = new LogoutMsg();
+			Logout msgOut = new Logout();
 			msgOut.setToken(this.token);
 			try {
 				msgOut.send(socket);

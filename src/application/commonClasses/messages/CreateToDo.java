@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import application.commonClasses.Tasks_Priority;
 import application.commonClasses.messages.Message.NameValue;
 
-public class CreateToDoMsg extends Message {
+public class CreateToDo extends Message {
 	private static final String CLIENT_TOKEN = "token";
 	private static final String TODO_TITEL = "titel";
 	private static final String TODO_PRIORITY = "priority";

@@ -2,7 +2,7 @@ package application.commonClasses.messages;
 
 import java.util.ArrayList;
 
-public class ChangePasswordMsg extends Message {
+public class ChangePassword extends Message {
 	private static final String CLIENT_NAME = "name";
 	private static final String CLIENT_PASSWORD = "password";
 	private static final String CLIENT_NEW_PASSWORD = "new_password";

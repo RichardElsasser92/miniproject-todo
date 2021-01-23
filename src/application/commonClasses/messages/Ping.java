@@ -3,7 +3,7 @@ package application.commonClasses.messages;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PingMsg extends Message {
+public class Ping extends Message {
 	//private static final String CLIENT_TOKEN = "token";
 	private static final String CLIENT_LOGIN = "login";
 	

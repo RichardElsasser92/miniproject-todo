@@ -7,14 +7,14 @@ import java.util.Random;
 
 import application.appClasses.User;
 import application.commonClasses.fileManager.User_FM;
-import application.commonClasses.messages.LoginMsg;
+import application.commonClasses.messages.Login;
 import application.commonClasses.messages.Message;
 
 public class ServerController {
 	
 	private static Map<String, String> sessions = new HashMap<>();
 	
-	public static String login(LoginMsg message) {
+	public static String login(Login message) {
 		
 		String userId = null;
 		

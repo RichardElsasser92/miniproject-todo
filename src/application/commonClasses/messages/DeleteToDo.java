@@ -2,7 +2,7 @@ package application.commonClasses.messages;
 
 import java.util.ArrayList;
 
-public class DeleteToDoMsg extends Message {
+public class DeleteToDo extends Message {
 	private static final String CLIENT_TODO = "todo";
 	
 	private String todoId;

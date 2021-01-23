@@ -2,7 +2,7 @@ package application.commonClasses.messages.serverReplies;
 
 import java.util.ArrayList;
 
-public class ResultGetToDoMsg extends ResultMsg {
+public class Result_GetToDo extends ResultMsg {
 
 	private static final String TODO_ATTRIBUTES = "attributes";
 

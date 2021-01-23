@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import application.commonClasses.messages.Message.NameValue;
 
-public class GetToDoMsg extends Message {
+public class GetToDo extends Message {
 	private static final String CLIENT_TODO = "todo";
 	
 	private String todoId;
