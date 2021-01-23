@@ -20,14 +20,13 @@ A user can:
 
 ## Features implemented
 - The Server can server multiple clients in parallel
-- All of the API commands are implemented
+- API
 - Data validation on the server
 - Password hashing
 - Real tokes for user logins --> user id
 - Save and restoring data with File Manager
 - The ToDos are however without due-dates
-- MVC for client and server
-- GUI with JavaFX
+- MVC and GUI with JavaFX
 - Translator
 - SplashScreen
 	
